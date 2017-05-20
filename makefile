@@ -14,9 +14,8 @@ all: clean trey
 
 trey: res
 	powershell "[long]((get-date).touniversaltime()-[datetime]'1970-01-01').totalmilliseconds" > now.ts
-	set /p TS= < now.ts
-	rm now.ts
-	$(CC) $(CFLAGS) src/*.c $(LFLAGS) -Fedist/trey-$(TS).exe
+	cmd /v /c "set /p TS= < now.ts && $(CC) $(CFLAGS) src/*.c $(LFLAGS) -Fedist/trey-!TS!.exe"
+	del now.ts
 	mv src/*.obj obj/
 
 res:
