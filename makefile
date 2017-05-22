@@ -25,5 +25,7 @@ res:
 trey: res
 	powershell "[long]((get-date).touniversaltime()-[datetime]'1970-01-01').totalmilliseconds" > now.ts
 	cmd /v /c "set /p TS= < now.ts && $(CC) $(CFLAGS) src/*.c $(LFLAGS) -Fedist/trey-!TS!.exe && $(SIGN) $(SIGNARGS) dist\\trey-!TS!.exe || rem"
-	del now.ts
-	mv src/*.obj obj/
+	cmd /c "del now.ts"
+	cmd /c "move src\main.obj  obj"
+	cmd /c "move src\utils.obj obj"
+
