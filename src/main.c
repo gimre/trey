@@ -41,7 +41,7 @@ void handleWindowMessage(
             createShellIcon( hwnd );
             break;
         case WM_USER_SHELLICON:
-            handleTrayIconMessage( hwnd, message, lParam, wParam );
+            handleTrayIconMessage( hwnd, message, wParam, lParam );
             break;
         default:
             break;
