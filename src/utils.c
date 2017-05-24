@@ -22,15 +22,19 @@ HWND createMessageOnlyWindow(
 
 NOTIFYICONDATA createShellIconData(
     const HWND hwnd,
-    const UINT callbackMessage
+    const UINT callbackMessage,
+    const UINT id
 ) {
     const HINSTANCE instance = GetModuleHandle( NULL );
     return ( NOTIFYICONDATA ) {
         .cbSize           = sizeof( NOTIFYICONDATA ),
-        .hIcon            = LoadIcon( instance, MAKEINTRESOURCE(ICO1) ),
+        .hIcon            = LoadIcon( instance, MAKEINTRESOURCE( RESI_ICON ) ),
         .hWnd             = (HWND) hwnd,
-        .uID              = 0,
-        .uFlags           = NIF_GUID | NIF_ICON | NIF_MESSAGE | NIF_TIP,
+        .dwInfoFlags      = NIIF_INFO,
+        .szInfo           = "14 C, sunny with light showers",
+        .szInfoTitle      = "Weather",
+        .uFlags           = NIF_ICON | NIF_MESSAGE | NIF_TIP | NIF_INFO,
+        .uID              = id,
         .uCallbackMessage = callbackMessage
     };
 }
@@ -46,8 +50,8 @@ WNDCLASSEX createWindowClass(
         .lpszClassName = className,
         .lpfnWndProc   = windowProc,
         .style         = CS_DBLCLKS,
-        .hIcon         = LoadIcon( instance, MAKEINTRESOURCE( ICO1 ) ),
-        .hIconSm       = LoadIcon( instance, MAKEINTRESOURCE( ICO1 ) ),
+        .hIcon         = LoadIcon( instance, MAKEINTRESOURCE( RESI_ICON ) ),
+        .hIconSm       = LoadIcon( instance, MAKEINTRESOURCE( RESI_ICON ) ),
         .hCursor       = LoadCursor( NULL, IDC_ARROW ),
         .lpszMenuName  = NULL,
         .cbClsExtra    = 0,

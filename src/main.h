@@ -7,7 +7,17 @@
 
 extern const char WINDOW_CLASS[ ] = "Trey manager";
 
-void createShellIcon( HWND hwnd );
+void createShellIcon(
+    HWND hwnd,
+    UINT id
+);
+
+void handleMenuMessage(
+    HWND   hwnd,
+    UINT   message,
+    WPARAM wParam,
+    LPARAM lParam
+);
 
 void handleTrayIconMessage(
     HWND   hwnd,
@@ -21,6 +31,16 @@ void handleWindowMessage(
     UINT   message,
     WPARAM wParam,
     LPARAM lParam
+);
+
+void removeShellIcon(
+    HWND hwnd,
+    UINT id
+);
+
+void showTrayPopup(
+    HWND hwnd,
+    WORD resourceId
 );
 
 LRESULT CALLBACK WindowProcedure(

@@ -17,7 +17,7 @@ LFLAGS = -libpath:"C:\\Program Files\\PellesC\\Lib\\Win64\\" -subsystem:windows 
 all: clean trey
 
 clean:
-	del /Q dist\* obj\* src\main.res
+	del /Q dist\* bin\*
 
 res:
 	$(RC) src/main.rc
@@ -26,6 +26,7 @@ trey: res
 	powershell "[long]((get-date).touniversaltime()-[datetime]'1970-01-01').totalmilliseconds" > now.ts
 	cmd /v /c "set /p TS= < now.ts && $(CC) $(CFLAGS) src/*.c $(LFLAGS) -Fedist/trey-!TS!.exe && $(SIGN) $(SIGNARGS) dist\\trey-!TS!.exe || rem"
 	cmd /c "del now.ts"
-	cmd /c "move src\main.obj  obj"
-	cmd /c "move src\utils.obj obj"
+	cmd /c "move src\main.obj  bin"
+	cmd /c "move src\main.res  bin"
+	cmd /c "move src\utils.obj bin"
 

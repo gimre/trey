@@ -1,4 +1,12 @@
 
 #include "resource.h"
 
-ICO1 ICON DISCARDABLE "res/trey.ico"
+RESI_ICON ICON DISCARDABLE "res/trey.ico"
+
+RESM_MENU MENU
+BEGIN
+    POPUP "Tray"
+    BEGIN
+        MENUITEM "E&xit", RESM_MENU_FILE_EXIT
+    END
+END

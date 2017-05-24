@@ -1,2 +1,6 @@
 
-#define ICO1 101
+
+#define RESI_ICON 101
+#define RESM_MENU 201
+
+#define RESM_MENU_FILE_EXIT 4001
